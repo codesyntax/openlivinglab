@@ -59,7 +59,12 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-DATABASES = values.DatabaseURLValue('sqlite://', environ=True)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '{{ project_name }}.db',
+        }
+}
 
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10,                 # Default to 10
